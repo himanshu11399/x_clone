@@ -1,23 +1,16 @@
-import { Text, View, StyleSheet } from "react-native";
-import {Ionicons} from "@expo/vector-icons"
-import "../global.css"
+import { View, Text, TouchableOpacity } from 'react-native'
+import { useClerk } from '@clerk/clerk-expo'
+import React from 'react'
 
-export default function Index() {
+const HomeScreen = () => {
+    const {signOut}=useClerk();
   return (
-   <View className="flex-1 items-center justify-center bg-gray-500">
-      <Text className="text-xl font-bold text-blue-500 ">
-        Welcome to Nativewind!
-      </Text>
+    <View>
+     <TouchableOpacity onPress={()=>signOut()}>
+        <Text>Logout</Text>
+     </TouchableOpacity>
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#cebbbbff"
-
-  }
-})
+export default HomeScreen
